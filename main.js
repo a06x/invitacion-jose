@@ -1,19 +1,24 @@
 /**
- * INVITACIÓN DIGITAL "MI PATRIMONIO" - CUMPLEAÑOS DE JOSÉ
+ * INVITACIÓN DIGITAL MODERNA "MI PATRIMONIO" - CUMPLEAÑOS DE JOSÉ
  * Sábado 17 de Octubre de 2026
+ * Coordenadas: 7.983962, -63.543481 | RSVP: +58 424 9211768
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   // ==============================================================
-  // 1. CONFIGURACIÓN Y CONSTANTES
+  // 1. CONFIGURACIÓN Y CONSTANTES DEL EVENTO
   // ==============================================================
   const EVENT_CONFIG = {
-    title: "Cumpleaños de José - Finca Mi Patrimonio",
+    title: "Cumpleaños de José · Finca Mi Patrimonio",
     targetDate: new Date('2026-10-17T14:00:00-04:00'), // 17 de Octubre 2026, 2:00 PM
     locationName: "Finca Mi Patrimonio",
-    locationUrl: "https://maps.google.com/?q=Finca+Mi+Patrimonio",
-    whatsappPhone: "", // Opcional: Si el usuario desea pre-configurar un número ej: "584141234567"
-    description: "Gran celebración del cumpleaños de José en la Finca Mi Patrimonio. ¡Música llanera con Vitico Castillo, carne en vara y buena parranda!"
+    coordinates: "7.983962, -63.543481",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=7.983962,-63.543481",
+    wazeUrl: "https://waze.com/ul?ll=7.983962,-63.543481&navigate=yes",
+    whatsappPhone: "584249211768", // 04249211768 con código país +58
+    songTitle: "Yo no me voy de mi llano",
+    songArtist: "Jorge Guerrero",
+    description: "Gran celebración del cumpleaños de José en la Finca Mi Patrimonio. ¡Música llanera en vivo, ternera a la llanera y brindis con Buchanan's!"
   };
 
   // ==============================================================
@@ -37,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnCopyAddress = document.getElementById('btn-copy-address');
   const copyBtnText = document.getElementById('copy-btn-text');
 
-  // Gallery Elements
+  // Gallery Elements (4 Fotos)
   const slides = document.querySelectorAll('.gallery-slide');
   const dots = document.querySelectorAll('.slider-dots .dot');
   const btnPrev = document.getElementById('slide-prev');
@@ -54,15 +59,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnWhatsappRsvp = document.getElementById('btn-whatsapp-rsvp');
   const guestNameInput = document.getElementById('guest-name');
   const guestCompanionsInput = document.getElementById('guest-companions');
+  const vipTicketPreview = document.getElementById('vip-ticket-preview');
+  const vipGuestName = document.getElementById('vip-guest-name');
 
   // ==============================================================
-  // 3. APERTURA DEL PORTÓN 3D & AUDIO (VITICO CASTILLO)
+  // 3. APERTURA DEL PORTÓN 3D & AUDIO (JORGE GUERRERO)
   // ==============================================================
   let isMusicPlaying = false;
 
   function playMusic() {
     if (!bgAudio) return;
-    bgAudio.volume = 0.85;
+    bgAudio.volume = 0.9;
     const playPromise = bgAudio.play();
     if (playPromise !== undefined) {
       playPromise
@@ -71,8 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
           updateAudioUI(true);
         })
         .catch((error) => {
-          console.log("Audio autoplay prevented by browser or user interaction:", error);
-          // Si el navegador bloqueó el audio, lo dejamos pausado en UI
+          console.log("Audio autoplay prevented by browser policy:", error);
           isMusicPlaying = false;
           updateAudioUI(false);
         });
@@ -96,24 +102,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Evento "Toque para entrar"
+  // Toque para entrar
   btnEnter?.addEventListener('click', () => {
-    // 1. Iniciar música de inmediato por la interacción del usuario
+    // 1. Iniciar audio con la interacción
     playMusic();
 
-    // 2. Animación 3D del Portón (apertura hacia adentro)
+    // 2. Ejecutar rotación 3D de las hojas del portón
     gateOverlay?.classList.add('gate-opened');
 
-    // 3. Suave desvanecimiento y desmonte del overlay
+    // 3. Desvanecer y retirar overlay
     setTimeout(() => {
       gateOverlay?.classList.add('fade-out');
-    }, 1200);
+    }, 1100);
 
     setTimeout(() => {
       if (gateOverlay) {
         gateOverlay.style.display = 'none';
       }
-    }, 2500);
+    }, 2400);
   });
 
   // Toggle de audio flotante
@@ -156,25 +162,21 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateCountdown, 1000);
 
   // ==============================================================
-  // 5. AGENDAR EN CALENDARIO (GOOGLE & ARCHIVO .ICS)
+  // 5. AGENDAR EN CALENDARIO (GOOGLE CALENDAR)
   // ==============================================================
   btnAddCalendar?.addEventListener('click', (e) => {
     e.preventDefault();
-    
-    // Formato Google Calendar (UTC aprox)
     const startDate = "20261017T180000Z";
     const endDate = "20261018T080000Z";
-    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(EVENT_CONFIG.title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(EVENT_CONFIG.description)}&location=${encodeURIComponent(EVENT_CONFIG.locationName)}`;
-    
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(EVENT_CONFIG.title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(EVENT_CONFIG.description)}&location=${encodeURIComponent(EVENT_CONFIG.coordinates)}`;
     window.open(googleCalendarUrl, '_blank');
   });
 
   // ==============================================================
-  // 6. COPIAR UBICACIÓN
+  // 6. COPIAR COORDENADAS GPS
   // ==============================================================
   btnCopyAddress?.addEventListener('click', () => {
-    const textToCopy = `Finca Mi Patrimonio - Cumpleaños de José (Sábado 17 de Octubre de 2026)\nUbicación: ${EVENT_CONFIG.locationUrl}`;
-    
+    const textToCopy = EVENT_CONFIG.coordinates;
     if (navigator.clipboard) {
       navigator.clipboard.writeText(textToCopy).then(() => {
         showCopySuccess();
@@ -195,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.execCommand('copy');
       showCopySuccess();
     } catch (err) {
-      console.error('No se pudo copiar:', err);
+      console.error('Error al copiar:', err);
     }
     document.body.removeChild(textArea);
   }
@@ -203,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function showCopySuccess() {
     if (copyBtnText) {
       const originalText = copyBtnText.textContent;
-      copyBtnText.textContent = "¡Copiado con éxito! ✓";
+      copyBtnText.textContent = "¡Coordenadas Copiadas! ✓";
       setTimeout(() => {
         copyBtnText.textContent = originalText;
       }, 2500);
@@ -211,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==============================================================
-  // 7. GALERÍA DEL CUMPLEAÑERO (CARRUSEL TÁCTIL & LIGHTBOX)
+  // 7. GALERÍA DE JOSÉ (CARRUSEL TÁCTIL DE 4 FOTOS)
   // ==============================================================
   let currentSlide = 0;
   let slideInterval = null;
@@ -266,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Touch Swipe para Celulares
+  // Swipe táctil en móviles
   let touchStartX = 0;
   let touchEndX = 0;
 
@@ -292,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   startSlideAutoplay();
 
-  // Lightbox Zoom al hacer clic en fotos
+  // Lightbox Zoom
   slides.forEach((slide) => {
     slide.addEventListener('click', () => {
       const img = slide.querySelector('.slide-img');
@@ -318,27 +320,30 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==============================================================
-  // 8. CONFIRMACIÓN DE ASISTENCIA POR WHATSAPP
+  // 8. CONFIRMACIÓN DE ASISTENCIA POR WHATSAPP (04249211768)
   // ==============================================================
   btnWhatsappRsvp?.addEventListener('click', () => {
     const guestName = guestNameInput?.value.trim();
-    const companions = guestCompanionsInput?.value || "Solo yo";
+    const companions = guestCompanionsInput?.value || "Solo yo (1 persona)";
 
     if (!guestName) {
-      alert("Por favor ingresa tu nombre y apellido para confirmar tu asistencia.");
+      alert("Por favor ingresa tu nombre y apellido para confirmar tu asistencia con José.");
       guestNameInput?.focus();
       return;
     }
 
-    const message = `¡Hola José! 🤠🎉\n\nConfirmo con mucho gusto mi asistencia a tu fiesta de cumpleaños en la Finca "Mi Patrimonio" el sábado 17 de octubre de 2026.\n\n👤 *Invitado:* ${guestName}\n👥 *Acompañantes:* ${companions}\n\n¡Nos vemos allá para celebrar y parrandear! 🍻🥩`;
+    // Mensaje para José
+    const message = `¡Hola José! 🤠🎉\n\nConfirmo con mucho gusto mi asistencia a tu fiesta de cumpleaños en la Finca "Mi Patrimonio" el sábado 17 de octubre de 2026.\n\n👤 *Invitado:* ${guestName}\n👥 *Acompañantes:* ${companions}\n📍 *Ubicación:* 7.983962, -63.543481\n\n¡Allá nos vemos para brindar con Buchanan's y parrandear! 🥩🥃`;
 
-    let whatsappUrl = "";
-    if (EVENT_CONFIG.whatsappPhone) {
-      whatsappUrl = `https://wa.me/${EVENT_CONFIG.whatsappPhone}?text=${encodeURIComponent(message)}`;
-    } else {
-      whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/${EVENT_CONFIG.whatsappPhone}?text=${encodeURIComponent(message)}`;
+
+    // Mostrar pase VIP en pantalla
+    if (vipTicketPreview && vipGuestName) {
+      vipGuestName.textContent = guestName.toUpperCase();
+      vipTicketPreview.style.display = 'block';
     }
 
+    // Abrir WhatsApp
     window.open(whatsappUrl, '_blank');
   });
 
