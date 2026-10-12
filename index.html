@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Mi Patrimonio | Cumpleaños de José - Invitación Digital</title>
+  
+  <!-- SEO & Social Sharing (OpenGraph) -->
+  <meta name="description" content="Estás cordialmente invitado a celebrar el cumpleaños de José en la Finca Mi Patrimonio este sábado 17 de octubre de 2026. Música llanera en vivo, carne en vara y gran celebración." />
+  <meta property="og:title" content="Invitación: Cumpleaños de José - Finca Mi Patrimonio" />
+  <meta property="og:description" content="Sábado 17 de Octubre de 2026 · Finca Mi Patrimonio · ¡Toque para abrir el portón y celebrar con nosotros!" />
+  <meta property="og:image" content="./assets/gate_entrance.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#2B1810" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Rye&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Audio Element (Vitico Castillo / Joropo) -->
+  <audio id="bg-audio" preload="auto" loop>
+    <source src="assets/musica.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- ============================================================== -->
+  <!-- PANTALLA 1: EL PORTÓN (LANDING CON APERTURA 3D)                -->
+  <!-- ============================================================== -->
+  <div id="gate-overlay" class="gate-overlay">
+    <!-- Atmospheric Lighting & Fog -->
+    <div class="gate-vignette"></div>
+    <div class="gate-dust-particles"></div>
+
+    <!-- Hanging Rustic Sign "Mi Patrimonio" -->
+    <div class="sign-wrapper" id="sign-wrapper">
+      <div class="hanging-chains">
+        <div class="chain chain-left"></div>
+        <div class="chain chain-right"></div>
+      </div>
+      <img src="assets/sign_mi_patrimonio.png" alt="Mi Patrimonio" class="gate-sign-img" id="gate-sign" />
+    </div>
+
+    <!-- 3D Gate Viewport -->
+    <div class="gate-viewport">
+      <!-- Left & Right Stone Pillars Frame -->
+      <div class="pillar pillar-left"></div>
+      <div class="pillar pillar-right"></div>
+
+      <!-- 3D Rotating Gates -->
+      <div class="gates-container">
+        <div class="gate-door gate-left" id="gate-left">
+          <img src="assets/gate_door_left.png" alt="Portón Hoja Izquierda" class="gate-door-img" />
+          <div class="gate-shadow-overlay"></div>
+        </div>
+        <div class="gate-door gate-right" id="gate-right">
+          <img src="assets/gate_door_right.png" alt="Portón Hoja Derecha" class="gate-door-img" />
+          <div class="gate-shadow-overlay"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Entry Button & Prompt -->
+    <div class="gate-ui" id="gate-ui">
+      <p class="gate-invitation-badge">INVITACIÓN EXCLUSIVA</p>
+      <h1 class="gate-subtitle">CUMPLEAÑOS DE JOSÉ</h1>
+      
+      <button id="btn-enter" class="btn-enter-gate" aria-label="Toque para entrar a la celebración">
+        <span class="btn-glow"></span>
+        <span class="btn-content">
+          <svg class="icon-horseshoe" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12c0 3.69 2.02 6.9 5.01 8.57l1.43-2.48C6.31 16.89 5 14.61 5 12c0-3.87 3.13-7 7-7s7 3.13 7 7c0 2.61-1.31 4.89-3.44 6.09l1.43 2.48C20 18.9 22 15.69 22 12c0-5.52-4.48-10-10-10zm-3 15c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm6 0c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"/>
+          </svg>
+          <span class="btn-text">TOQUE PARA ENTRAR</span>
+        </span>
+      </button>
+
+      <div class="gate-music-hint">
+        <span class="pulse-dot"></span>
+        <span>Música llanera incluida · Toque para vivir la experiencia</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- FLOATING AUDIO CONTROLLER                                      -->
+  <!-- ============================================================== -->
+  <aside class="floating-music-control" id="music-control" title="Reproducir / Pausar Música">
+    <button class="music-disc-btn" id="music-toggle-btn" aria-label="Control de música">
+      <div class="disc-vinyl" id="disc-vinyl">
+        <div class="disc-center">
+          <span class="disc-label">VITICO</span>
+        </div>
+      </div>
+      <div class="equalizer-bars" id="equalizer-bars">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+      </div>
+    </button>
+    <div class="music-tooltip">
+      <span class="music-song">Música Llanera</span>
+      <span class="music-artist">Vitico Castillo</span>
+    </div>
+  </aside>
+
+  <!-- ============================================================== -->
+  <!-- PANTALLA 2: LA INVITACIÓN PRINCIPAL (ONE-PAGE SCROLL)           -->
+  <!-- ============================================================== -->
+  <main class="main-invitation" id="main-invitation">
+
+    <!-- HERO SECTION -->
+    <header class="hero-section">
+      <div class="hero-bg-overlay"></div>
+      
+      <div class="hero-content container">
+        <div class="hero-ornament">
+          <span class="ornament-line"></span>
+          <span class="ornament-icon">✦</span>
+          <span class="ornament-line"></span>
+        </div>
+
+        <span class="hero-top-tag">GRAN CELEBRACIÓN LLANERA</span>
+        <h1 class="hero-title">Mi Patrimonio</h1>
+        
+        <div class="hero-badge-wrap">
+          <div class="hero-cumpleanero">
+            <span class="badge-prefix">EL CUMPLEAÑOS DE</span>
+            <span class="badge-name">JOSÉ</span>
+          </div>
+        </div>
+
+        <p class="hero-quote">
+          «¡Compadre y comadre! Los caminos de la vida nos traen a celebrar un año más de vivencias, risas y buena parranda llanera en nuestra casa.»
+        </p>
+
+        <!-- Quick Event Pill -->
+        <div class="hero-date-pill">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
+          </svg>
+          <span>Sábado, 17 de Octubre de 2026 · 2:00 PM</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION: CUENTA REGRESIVA -->
+    <section class="section section-countdown">
+      <div class="container text-center">
+        <div class="section-header">
+          <span class="section-tag">EL GRAN DÍA SE ACERCA</span>
+          <h2 class="section-title">Cuenta Regresiva</h2>
+          <div class="header-divider"></div>
+          <p class="section-desc">Falta muy poco para encender el fogón, brindar y zapatear con buen joropo:</p>
+        </div>
+
+        <div class="countdown-grid" id="countdown-grid">
+          <div class="countdown-box">
+            <div class="countdown-card">
+              <span class="countdown-num" id="cd-days">00</span>
+            </div>
+            <span class="countdown-label">DÍAS</span>
+          </div>
+
+          <div class="countdown-separator">:</div>
+
+          <div class="countdown-box">
+            <div class="countdown-card">
+              <span class="countdown-num" id="cd-hours">00</span>
+            </div>
+            <span class="countdown-label">HORAS</span>
+          </div>
+
+          <div class="countdown-separator">:</div>
+
+          <div class="countdown-box">
+            <div class="countdown-card">
+              <span class="countdown-num" id="cd-minutes">00</span>
+            </div>
+            <span class="countdown-label">MINUTOS</span>
+          </div>
+
+          <div class="countdown-separator">:</div>
+
+          <div class="countdown-box">
+            <div class="countdown-card">
+              <span class="countdown-num" id="cd-seconds">00</span>
+            </div>
+            <span class="countdown-label">SEGUNDOS</span>
+          </div>
+        </div>
+
+        <!-- Add to Calendar Action -->
+        <div class="countdown-actions">
+          <a href="#" id="btn-add-calendar" class="btn-rustic-outline">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/>
+            </svg>
+            <span>Agendar en mi Calendario</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: DETALLES Y UBICACIÓN -->
+    <section class="section section-details" id="ubicacion">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">COORDENADAS DE LA FIESTA</span>
+          <h2 class="section-title">Fecha & Ubicación</h2>
+          <div class="header-divider"></div>
+        </div>
+
+        <div class="details-cards-grid">
+          <!-- Card Fecha -->
+          <div class="detail-card">
+            <div class="card-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+              </svg>
+            </div>
+            <h3 class="card-title">¿Cuándo?</h3>
+            <p class="card-highlight">Sábado, 17 de Octubre de 2026</p>
+            <p class="card-subtext">A partir de las 2:00 PM</p>
+            <span class="card-badge">Puntualidad Llanera</span>
+          </div>
+
+          <!-- Card Lugar -->
+          <div class="detail-card">
+            <div class="card-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+            </div>
+            <h3 class="card-title">¿Dónde?</h3>
+            <p class="card-highlight">Finca "Mi Patrimonio"</p>
+            <p class="card-subtext">Entorno campestre privado, estacionamiento seguro para camionetas y rústicos.</p>
+            <span class="card-badge">Acceso por Portón Principal</span>
+          </div>
+
+          <!-- Card El Agasajo -->
+          <div class="detail-card">
+            <div class="card-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+              </svg>
+            </div>
+            <h3 class="card-title">El Agasajo</h3>
+            <p class="card-highlight">Carne en Vara & Vitico Castillo</p>
+            <p class="card-subtext">Tradición, ternera a la llanera, bebidas heladas, música en vivo y brindis por José.</p>
+            <span class="card-badge">Parranda Garantizada</span>
+          </div>
+        </div>
+
+        <!-- Location GPS Actions -->
+        <div class="location-action-box">
+          <div class="location-banner">
+            <div class="location-info">
+              <h4>¿Cómo llegar a la Finca Mi Patrimonio?</h4>
+              <p>Presiona el botón para abrir la ruta directa en tu aplicación de mapas favorita (Google Maps o Waze).</p>
+            </div>
+            <div class="location-buttons">
+              <a href="https://maps.google.com/?q=Finca+Mi+Patrimonio" target="_blank" rel="noopener noreferrer" class="btn-rustic-gold">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <span>Abrir en Google Maps</span>
+              </a>
+              <button id="btn-copy-address" class="btn-rustic-outline">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                </svg>
+                <span id="copy-btn-text">Copiar Ubicación</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: CÓDIGO DE VESTIMENTA (DRESS CODE) -->
+    <section class="section section-dresscode" id="vestimenta">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">PARA LA OCASIÓN</span>
+          <h2 class="section-title">Código de Vestimenta</h2>
+          <div class="header-divider"></div>
+          <p class="section-desc">Queremos que disfrutes al máximo con comodidad y estilo. El concepto para este día es <strong>Finca & Elegancia Llanera</strong>.</p>
+        </div>
+
+        <div class="dresscode-grid">
+          <!-- Tarjeta Mujeres -->
+          <div class="dresscode-card">
+            <div class="dresscode-img-wrap">
+              <img src="assets/dress_code_mujeres.jpg" alt="Código de Vestimenta Mujeres - Cowgirl Chic" class="dresscode-img" loading="lazy" />
+              <div class="dresscode-badge">DAMAS</div>
+            </div>
+            <div class="dresscode-content">
+              <h3 class="dresscode-style-title">Cowgirl Chic / Llanera Elegante</h3>
+              <p class="dresscode-intro">Un look fresco, sofisticado y listo para compartir al aire libre:</p>
+              <ul class="dresscode-tips">
+                <li>
+                  <span class="check-icon">✓</span>
+                  <span><strong>Prendas:</strong> Blusa campera blanca o crema, camisa vaquera fina, o jeans cómodos bien ajustados.</span>
+                </li>
+                <li>
+                  <span class="check-icon">✓</span>
+                  <span><strong>Calzado:</strong> Botas de cuero llaneras o camperas (recomendadas para caminar sobre césped y tierra).</span>
+                </li>
+                <li>
+                  <span class="check-icon">✓</span>
+                  <span><strong>Accesorios:</strong> Sombrero campestre opcional, chaqueta ligera de cuero o mezclilla para el atardecer.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Tarjeta Hombres -->
+          <div class="dresscode-card">
+            <div class="dresscode-img-wrap">
+              <img src="assets/dress_code_hombres.jpg" alt="Código de Vestimenta Hombres - Estilo Llanero" class="dresscode-img" loading="lazy" />
+              <div class="dresscode-badge">CABALLEROS</div>
+            </div>
+            <div class="dresscode-content">
+              <h3 class="dresscode-style-title">Finca & Estilo Llanero</h3>
+              <p class="dresscode-intro">El porte auténtico del llano con un toque moderno y pulcro:</p>
+              <ul class="dresscode-tips">
+                <li>
+                  <span class="check-icon">✓</span>
+                  <span><strong>Prendas:</strong> Camisa a cuadros o vaquera (manga larga o arremangada) y pantalón de jean clásico oscuro.</span>
+                </li>
+                <li>
+                  <span class="check-icon">✓</span>
+                  <span><strong>Calzado:</strong> Botas vaqueras de cuero o botines camperos.</span>
+                </li>
+                <li>
+                  <span class="check-icon">✓</span>
+                  <span><strong>Accesorios:</strong> Sombrero pelo 'e guama o tejana, cinturón de cuero con hebilla tradicional.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="dresscode-note-card">
+          <div class="note-icon">💡</div>
+          <p><strong>Nota especial:</strong> La finca cuenta con espacios verdes y caminos de tierra. Te sugerimos evitar calzados de tacón fino para tu comodidad al caminar y zapatear.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: GALERÍA DEL CUMPLEAÑERO (JOSÉ) -->
+    <section class="section section-gallery" id="galeria">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">MOMENTOS & PASIÓN</span>
+          <h2 class="section-title">El Homenajeado: José</h2>
+          <div class="header-divider"></div>
+          <p class="section-desc">Hombre de trabajo, amante de las buenas amistades, los rústicos y la buena música:</p>
+        </div>
+
+        <!-- Slider / Carousel Container -->
+        <div class="gallery-carousel-wrap">
+          <div class="gallery-slider" id="gallery-slider">
+            
+            <!-- Slide 1 -->
+            <div class="gallery-slide active" data-index="0">
+              <div class="slide-card">
+                <div class="slide-image-box">
+                  <img src="assets/jose_2.jpeg" alt="José con los rústicos en el campo" class="slide-img" />
+                  <div class="slide-overlay">
+                    <span class="slide-tag">Pasión 4x4</span>
+                    <h3 class="slide-caption">Aventuras y caminos de tierra</h3>
+                    <p class="slide-subcaption">Disfrutando de la fuerza del campo y los buenos rústicos.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="gallery-slide" data-index="1">
+              <div class="slide-card">
+                <div class="slide-image-box">
+                  <img src="assets/jose_1.jpeg" alt="José celebrando de noche" class="slide-img" />
+                  <div class="slide-overlay">
+                    <span class="slide-tag">Alegría</span>
+                    <h3 class="slide-caption">Celebrando cada momento</h3>
+                    <p class="slide-subcaption">Siempre con una sonrisa y brindando por lo que está por venir.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="gallery-slide" data-index="2">
+              <div class="slide-card">
+                <div class="slide-image-box">
+                  <img src="assets/jose_3.jpeg" alt="José en los platos animando la fiesta" class="slide-img" />
+                  <div class="slide-overlay">
+                    <span class="slide-tag">El Alma de la Fiesta</span>
+                    <h3 class="slide-caption">Música, mezclas y buen ambiente</h3>
+                    <p class="slide-subcaption">Poniendo el toque y el ritmo para que nadie se quede sentado.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Carousel Controls -->
+          <button class="slider-btn btn-prev" id="slide-prev" aria-label="Foto anterior">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+          </button>
+          <button class="slider-btn btn-next" id="slide-next" aria-label="Siguiente foto">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+            </svg>
+          </button>
+
+          <!-- Dots Indicator -->
+          <div class="slider-dots" id="slider-dots">
+            <button class="dot active" data-index="0" aria-label="Foto 1"></button>
+            <button class="dot" data-index="1" aria-label="Foto 2"></button>
+            <button class="dot" data-index="2" aria-label="Foto 3"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: CONFIRMACIÓN DE ASISTENCIA (RSVP) -->
+    <section class="section section-rsvp" id="confirmacion">
+      <div class="container">
+        <div class="rsvp-card">
+          <div class="rsvp-decor-top">
+            <span class="rsvp-cow-horn">𐂂</span>
+          </div>
+
+          <span class="section-tag">CONFIRMACIÓN IMPORTANTE</span>
+          <h2 class="rsvp-title">¿Nos acompañas en Mi Patrimonio?</h2>
+          <div class="header-divider"></div>
+          
+          <p class="rsvp-desc">
+            Para preparar la mejor ternera a la llanera y recibirte con las atenciones que te mereces, por favor confírmanos tu asistencia antes del <strong>10 de Octubre</strong>.
+          </p>
+
+          <form id="rsvp-form" class="rsvp-form" onsubmit="return false;">
+            <div class="form-group">
+              <label for="guest-name">Nombre y Apellido del Invitado:</label>
+              <input type="text" id="guest-name" class="rsvp-input" placeholder="Ej. Carlos Mendoza" required />
+            </div>
+
+            <div class="form-group">
+              <label for="guest-companions">Número de Acompañantes:</label>
+              <select id="guest-companions" class="rsvp-select">
+                <option value="Voy solo(a)">Solo yo</option>
+                <option value="+1 Acompañante">+1 Acompañante</option>
+                <option value="+2 Acompañantes">+2 Acompañantes</option>
+                <option value="Con la familia">Con la familia</option>
+              </select>
+            </div>
+
+            <button type="button" id="btn-whatsapp-rsvp" class="btn-rsvp-whatsapp">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm.01 18.06c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.106 8.106 0 01-1.24-4.29c0-4.51 3.67-8.18 8.18-8.18 2.19 0 4.24.85 5.79 2.4 1.54 1.54 2.4 3.6 2.4 5.78 0 4.52-3.67 8.15-8.14 8.15zm4.49-6.13c-.25-.12-1.46-.72-1.69-.81-.22-.08-.39-.12-.55.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.44.12-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.55-1.33-.76-1.82-.2-.48-.41-.41-.56-.42l-.48-.01c-.17 0-.44.06-.67.31-.22.25-.87.85-.87 2.08 0 1.23.89 2.42 1.02 2.59.12.17 1.76 2.69 4.26 3.77.6.26 1.06.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.46-.6 1.67-1.17.21-.58.21-1.07.15-1.17-.06-.11-.23-.17-.48-.3z"/>
+              </svg>
+              <span>Confirmar por WhatsApp con José</span>
+            </button>
+          </form>
+
+          <p class="rsvp-sub">¡Tu compañía hará de este cumpleaños un recuerdo imborrable!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+      <div class="container text-center">
+        <div class="footer-logo">
+          <img src="assets/sign_mi_patrimonio.png" alt="Mi Patrimonio" class="footer-sign-img" />
+        </div>
+        <p class="footer-quote">
+          «Llano es llano, pariente. ¡Nos vemos en el portón de Mi Patrimonio!»
+        </p>
+        <p class="footer-copy">
+          Sábado 17 de Octubre de 2026 · Cumpleaños de José · Hecho con el corazón
+        </p>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- LIGHTBOX MODAL PARA FOTOS -->
+  <div id="lightbox-modal" class="lightbox-modal" aria-hidden="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar foto">×</button>
+    <img src="" alt="Foto ampliada" class="lightbox-img" id="lightbox-img" />
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="main.js"></script>
+</body>
+</html>
