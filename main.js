@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const cdSeconds = document.getElementById('cd-seconds');
   const btnAddCalendar = document.getElementById('btn-add-calendar');
 
-  // Gallery Elements (4 Fotos)
+  // Gallery Elements (5 Fotos)
   const slides = document.querySelectorAll('.gallery-slide');
   const dots = document.querySelectorAll('.slider-dots .dot');
   const btnPrev = document.getElementById('slide-prev');
