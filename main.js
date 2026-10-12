@@ -38,10 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const cdSeconds = document.getElementById('cd-seconds');
   const btnAddCalendar = document.getElementById('btn-add-calendar');
 
-  // Location Copy
-  const btnCopyAddress = document.getElementById('btn-copy-address');
-  const copyBtnText = document.getElementById('copy-btn-text');
-
   // Gallery Elements (4 Fotos)
   const slides = document.querySelectorAll('.gallery-slide');
   const dots = document.querySelectorAll('.slider-dots .dot');
@@ -172,45 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.open(googleCalendarUrl, '_blank');
   });
 
-  // ==============================================================
-  // 6. COPIAR COORDENADAS GPS
-  // ==============================================================
-  btnCopyAddress?.addEventListener('click', () => {
-    const textToCopy = EVENT_CONFIG.coordinates;
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(textToCopy).then(() => {
-        showCopySuccess();
-      }).catch(() => {
-        fallbackCopy(textToCopy);
-      });
-    } else {
-      fallbackCopy(textToCopy);
-    }
-  });
-
-  function fallbackCopy(text) {
-    const textArea = document.createElement("textarea");
-    textArea.value = text;
-    document.body.appendChild(textArea);
-    textArea.select();
-    try {
-      document.execCommand('copy');
-      showCopySuccess();
-    } catch (err) {
-      console.error('Error al copiar:', err);
-    }
-    document.body.removeChild(textArea);
-  }
-
-  function showCopySuccess() {
-    if (copyBtnText) {
-      const originalText = copyBtnText.textContent;
-      copyBtnText.textContent = "¡Coordenadas Copiadas! ✓";
-      setTimeout(() => {
-        copyBtnText.textContent = originalText;
-      }, 2500);
-    }
-  }
+  // Ubicación: Navegación directa con Google Maps
+  // El botón principal enlaza automáticamente a las coordenadas en la app de mapas.
 
   // ==============================================================
   // 7. GALERÍA DE JOSÉ (CARRUSEL TÁCTIL DE 4 FOTOS)
@@ -294,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   startSlideAutoplay();
 
-  // Lightbox Zoom
+  // Lightbox Zoom para Galería de José
   slides.forEach((slide) => {
     slide.addEventListener('click', () => {
       const img = slide.querySelector('.slide-img');
@@ -303,6 +262,22 @@ document.addEventListener('DOMContentLoaded', () => {
         lightboxImg.src = img.src;
         if (lightboxCaption && caption) {
           lightboxCaption.textContent = caption.textContent;
+        }
+        lightboxModal.classList.add('open');
+      }
+    });
+  });
+
+  // Lightbox Zoom para Fotos de Vestimenta (Damas y Caballeros)
+  const dresscodeCards = document.querySelectorAll('.dresscode-lightbox-trigger');
+  dresscodeCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const img = card.querySelector('.dresscode-img');
+      const title = card.getAttribute('data-title') || 'Código de Vestimenta';
+      if (img && lightboxModal && lightboxImg) {
+        lightboxImg.src = img.src;
+        if (lightboxCaption) {
+          lightboxCaption.textContent = title;
         }
         lightboxModal.classList.add('open');
       }
@@ -333,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Mensaje para José
-    const message = `¡Hola José! 🤠🎉\n\nConfirmo con mucho gusto mi asistencia a tu fiesta de cumpleaños en la Finca "Mi Patrimonio" el sábado 17 de octubre de 2026.\n\n👤 *Invitado:* ${guestName}\n👥 *Acompañantes:* ${companions}\n📍 *Ubicación:* 7.983962, -63.543481\n\n¡Allá nos vemos para brindar con Buchanan's y parrandear! 🥩🥃`;
+    const message = `¡Hola José! 🤠🎉\n\nConfirmo con mucho gusto mi asistencia a tu fiesta de cumpleaños en la Finca "Mi Patrimonio" el sábado 17 de octubre de 2026.\n\n👤 *Invitado:* ${guestName}\n👥 *Acompañantes:* ${companions}\n\n¡Allá nos vemos para brindar con Buchanan's y parrandear! 🥩🥃`;
 
     const whatsappUrl = `https://wa.me/${EVENT_CONFIG.whatsappPhone}?text=${encodeURIComponent(message)}`;
 
