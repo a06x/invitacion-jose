@@ -75,14 +75,25 @@ html {
 
 body.modern-theme {
   font-family: var(--font-body);
-  background-color: var(--bg-dark);
+  background: #140D08 url('assets/gate_entrance.jpg') center center / cover no-repeat fixed;
   color: var(--text-silver);
   line-height: 1.6;
   overflow-x: hidden;
-  background-image: 
-    radial-gradient(circle at 15% 15%, rgba(140, 82, 41, 0.08) 0%, transparent 45%),
-    radial-gradient(circle at 85% 85%, rgba(61, 90, 43, 0.08) 0%, transparent 45%),
-    linear-gradient(180deg, #18110B 0%, #20160F 50%, #150E09 100%);
+  position: relative;
+}
+
+body.modern-theme::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(22, 14, 9, 0.68) 0%,
+    rgba(18, 11, 7, 0.82) 50%,
+    rgba(14, 9, 5, 0.92) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
 }
 
 .container {
@@ -584,19 +595,19 @@ button {
   justify-content: center;
   text-align: center;
   padding: 6.5rem 1.25rem 5rem;
-  background: #18110B url('assets/ganado_sabana.jpg') center center / cover no-repeat;
+  background: transparent url('assets/gate_entrance.jpg') center center / cover no-repeat;
   color: #FFFFFF;
 }
 
-/* Filtro Suave y Cálido sobre la Foto de Ganado */
+/* Filtro Suave y Cálido sobre el Fondo de la Finca */
 .hero-bg-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(26, 17, 11, 0.65) 0%,
-    rgba(22, 15, 10, 0.78) 55%,
-    rgba(24, 17, 11, 0.98) 100%
+    rgba(26, 17, 11, 0.58) 0%,
+    rgba(22, 15, 10, 0.74) 55%,
+    rgba(24, 17, 11, 0.92) 100%
   );
   backdrop-filter: blur(1.5px);
   pointer-events: none;
@@ -716,6 +727,7 @@ button {
 .section {
   padding: 5.5rem 0;
   position: relative;
+  z-index: 2;
 }
 
 .section-header {
@@ -761,9 +773,10 @@ button {
 /* SECTION: CUENTA REGRESIVA DIGITAL                              */
 /* ============================================================== */
 .section-countdown {
-  background: linear-gradient(180deg, #18110B 0%, #241810 50%, #18110B 100%);
-  border-top: 1px solid rgba(212, 163, 71, 0.2);
-  border-bottom: 1px solid rgba(212, 163, 71, 0.2);
+  background: rgba(26, 17, 11, 0.78);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(212, 163, 71, 0.25);
+  border-bottom: 1px solid rgba(212, 163, 71, 0.25);
 }
 
 .countdown-grid {
@@ -866,7 +879,8 @@ button {
 /* SECTION: DETALLES & UBICACIÓN                                  */
 /* ============================================================== */
 .section-details {
-  background: #1F150E;
+  background: rgba(20, 13, 8, 0.75);
+  backdrop-filter: blur(8px);
 }
 
 .details-cards-grid {
@@ -1025,7 +1039,8 @@ button {
 /* SECTION: ITINERARIO DE LA FIESTA                               */
 /* ============================================================== */
 .section-timeline {
-  background: #18110B;
+  background: rgba(26, 17, 11, 0.82);
+  backdrop-filter: blur(8px);
 }
 
 .timeline-grid {
@@ -1085,7 +1100,8 @@ button {
 /* SECTION: CÓDIGO DE VESTIMENTA (CON LIGHTBOX AL TOCAR)          */
 /* ============================================================== */
 .section-dresscode {
-  background: #20160F;
+  background: rgba(24, 15, 10, 0.82);
+  backdrop-filter: blur(8px);
 }
 
 .dresscode-grid {
@@ -1245,7 +1261,8 @@ button {
 /* SECTION: GALERÍA DE JOSÉ                                       */
 /* ============================================================== */
 .section-gallery {
-  background: #18110B;
+  background: rgba(20, 13, 8, 0.82);
+  backdrop-filter: blur(8px);
 }
 
 .gallery-carousel-wrap {
@@ -1399,7 +1416,8 @@ button {
 /* SECTION: RSVP WHATSAPP                                         */
 /* ============================================================== */
 .section-rsvp {
-  background: linear-gradient(135deg, #24170F 0%, #150E08 100%);
+  background: rgba(26, 16, 10, 0.85);
+  backdrop-filter: blur(10px);
   color: #FFFFFF;
 }
 
