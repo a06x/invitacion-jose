@@ -31,9 +31,8 @@ Diseñada con estética campestre y llanera elegante (tonos pergamino, madera no
    - Botón directo para **"Agendar en mi Calendario"** (Google Calendar).
 
 5. **Ubicación y Logística:**
-   - Tarjetas de información clave: Fecha, Lugar (*Finca Mi Patrimonio*) y Menú (*Carne en vara & música en vivo*).
+   - Tarjetas de información clave: Fecha, Lugar (*Finca Mi Patrimonio*) y Celebración (*Ambiente campestre y gran fiesta*).
    - Botón directo **"Abrir en Google Maps"**.
-   - Botón para **"Copiar Ubicación"** con confirmación visual.
 
 6. **Código de Vestimenta (Dress Code):**
    - **Damas (Cowgirl Chic / Llanera Elegante):** Fotografía de referencia de alta costura campestre y lista de sugerencias (blusa campera, jeans, botas de cuero vaqueras, accesorios).
@@ -46,8 +45,8 @@ Diseñada con estética campestre y llanera elegante (tonos pergamino, madera no
    - Al hacer clic en cualquier fotografía se abre un visor ampliado (**Lightbox**).
 
 8. **Confirmación de Asistencia (RSVP) por WhatsApp:**
-   - Formulario sencillo con nombre y selección de acompañantes.
-   - Al presionar *"Confirmar por WhatsApp con José"*, se abre WhatsApp con un mensaje pre-formateado listo para enviar.
+   - Formulario sencillo con nombre para confirmación de asistencia individual directa.
+   - Al presionar *"Confirmar Asistencia por WhatsApp"*, se abre WhatsApp con un mensaje pre-formateado listo para enviar.
 
 ---
 

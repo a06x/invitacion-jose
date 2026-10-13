@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     whatsappPhone: "584249211768", // 04249211768 con código país +58
     songTitle: "Yo no me voy de mi llano",
     songArtist: "Jorge Guerrero",
-    description: "Gran celebración del cumpleaños de José en la Finca Mi Patrimonio. ¡Música llanera en vivo, ternera a la llanera y brindis con Buchanan's!"
+    description: "Gran celebración del cumpleaños de José en la Finca Mi Patrimonio. ¡Gran celebración campestre entre amigos y familia!"
   };
 
   // ==============================================================
@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // RSVP Elements
   const btnWhatsappRsvp = document.getElementById('btn-whatsapp-rsvp');
   const guestNameInput = document.getElementById('guest-name');
-  const guestCompanionsInput = document.getElementById('guest-companions');
   const vipTicketPreview = document.getElementById('vip-ticket-preview');
   const vipGuestName = document.getElementById('vip-guest-name');
 
@@ -299,7 +298,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==============================================================
   btnWhatsappRsvp?.addEventListener('click', () => {
     const guestName = guestNameInput?.value.trim();
-    const companions = guestCompanionsInput?.value || "Solo yo (1 persona)";
 
     if (!guestName) {
       alert("Por favor ingresa tu nombre y apellido para confirmar tu asistencia con José.");
@@ -308,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Mensaje para José
-    const message = `¡Hola José! 🤠🎉\n\nConfirmo con mucho gusto mi asistencia a tu fiesta de cumpleaños en la Finca "Mi Patrimonio" el sábado 17 de octubre de 2026.\n\n👤 *Invitado:* ${guestName}\n👥 *Acompañantes:* ${companions}\n\n¡Allá nos vemos para brindar con Buchanan's y parrandear! 🥩🥃`;
+    const message = `¡Hola José! 🤠🎉\n\nConfirmo mi asistencia a tu fiesta de cumpleaños en la Finca "Mi Patrimonio" el sábado 17 de octubre de 2026.\n\n👤 *Invitado:* ${guestName}\n\n¡Allá nos vemos para celebrar y compartir en grande! 🎂🎉`;
 
     const whatsappUrl = `https://wa.me/${EVENT_CONFIG.whatsappPhone}?text=${encodeURIComponent(message)}`;
 
