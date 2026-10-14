@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
     coordinates: "7.983857, -63.544761",
     googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=7.983857,-63.544761",
     wazeUrl: "https://waze.com/ul?ll=7.983857,-63.544761&navigate=yes",
-    whatsappPhone: "584249645554", // 04249211768 con código país +58
+    whatsappPhone: "584249645554", // 04249645554 con código país +58
     songTitle: "Yo no me voy de mi llano",
     songArtist: "Jorge Guerrero",
-    description: "Gran celebración del cumpleaños de José en el Fundo Mi Patrimonio. ¡Gran celebración campestre entre amigos y familia!"
+    description: "Gran celebración del cumpleaños de José en el Fundo Mi Patrimonio. ¡Día entero campestre con música en vivo, compartir y parranda!"
   };
 
   // ==============================================================
@@ -296,7 +296,9 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     const startDate = "20261017T140000Z"; // 10:00 AM (UTC-4) -> 14:00Z
     const endDate = "20261018T000000Z";   // 8:00 PM (UTC-4) -> 00:00Z (18 de Octubre)
-    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(EVENT_CONFIG.title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(EVENT_CONFIG.description)}&location=${encodeURIComponent(EVENT_CONFIG.coordinates)}`;
+    const calLocation = "Fundo Mi Patrimonio (Coordenadas: 7.983857, -63.544761)";
+    const calDetails = "Cumpleaños de José Rodríguez en el Fundo Mi Patrimonio.\n\nHorario: 10:00 AM a 8:00 PM.\nVestimenta: Fresca y Campestre.\nBebidas: Trae tu bebida preferida para brindar.\n\n¡Te esperamos para compartir un gran día llanero entre amigos y familia!";
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(EVENT_CONFIG.title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(calDetails)}&location=${encodeURIComponent(calLocation)}`;
     window.open(googleCalendarUrl, '_blank');
   });
 
