@@ -63,13 +63,53 @@ document.addEventListener('DOMContentLoaded', () => {
   const vipGuestName = document.getElementById('vip-guest-name');
 
   // ==============================================================
-  // 3. CONTROL DE VOLUMEN (INICIO AL 50% - MITAD DE VOLUMEN)
+  // 3. CONTROL DE VOLUMEN (COMPUTADORAS + TELÉFONOS MÓVILES)
   // ==============================================================
+  // En teléfonos móviles (iOS Safari y Android Chrome), el navegador
+  // ignora audio.volume por restricciones de hardware.
+  // Canalizamos el audio a través de la Web Audio API con un 'GainNode'
+  // (nodo de ganancia) para atenuar digitalmente el sonido en teléfonos.
   const INITIAL_VOLUME = 0.5; // Comienza a la mitad para cuidar los oídos del invitado
   let currentVolume = INITIAL_VOLUME;
   let previousVolume = INITIAL_VOLUME;
   let isMuted = false;
   let isMusicPlaying = false;
+
+  let audioCtx = null;
+  let gainNode = null;
+  let audioSourceNode = null;
+  let isWebAudioInit = false;
+
+  function initWebAudio() {
+    if (isWebAudioInit) return;
+    try {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioContextClass && bgAudio) {
+        audioCtx = new AudioContextClass();
+        audioSourceNode = audioCtx.createMediaElementSource(bgAudio);
+        gainNode = audioCtx.createGain();
+
+        // Asignar ganancia inicial (50%)
+        gainNode.gain.setValueAtTime(currentVolume, audioCtx.currentTime);
+
+        // Conectar grafo: Audio -> GainNode -> Parlantes
+        audioSourceNode.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        isWebAudioInit = true;
+      }
+    } catch (e) {
+      console.warn("Web Audio API GainNode fallback:", e);
+    }
+  }
+
+  function ensureAudioContextRunning() {
+    if (!isWebAudioInit) {
+      initWebAudio();
+    }
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+  }
 
   function updateVolumeUI(vol) {
     const percent = Math.round(vol * 100);
@@ -98,21 +138,42 @@ document.addEventListener('DOMContentLoaded', () => {
   function setAudioVolume(vol) {
     vol = Math.max(0, Math.min(1, vol));
     currentVolume = vol;
+
+    // 1. Control estándar HTML5 (PC / Computadoras)
     if (bgAudio) {
-      bgAudio.volume = vol;
+      try {
+        bgAudio.volume = vol;
+      } catch (e) {
+        // Ignorar si el navegador restringe audio.volume
+      }
     }
+
+    // 2. Control Web Audio API GainNode (¡Móviles: iOS Safari y Android Chrome!)
+    if (gainNode && audioCtx) {
+      try {
+        gainNode.gain.cancelScheduledValues(audioCtx.currentTime);
+        gainNode.gain.setValueAtTime(vol, audioCtx.currentTime);
+      } catch (e) {
+        gainNode.gain.value = vol;
+      }
+    }
+
     isMuted = (vol === 0);
     updateVolumeUI(vol);
   }
 
-  // Interacción del Slider de Volumen
-  volumeSlider?.addEventListener('input', (e) => {
-    const val = parseFloat(e.target.value);
-    setAudioVolume(val);
+  // Interacción del Slider de Volumen (input + change para compatibilidad total con pantallas táctiles)
+  ['input', 'change'].forEach(eventName => {
+    volumeSlider?.addEventListener(eventName, (e) => {
+      ensureAudioContextRunning();
+      const val = parseFloat(e.target.value);
+      setAudioVolume(val);
+    });
   });
 
   // Botón Mute / Unmute
   volumeMuteBtn?.addEventListener('click', () => {
+    ensureAudioContextRunning();
     if (isMuted || currentVolume === 0) {
       const restored = previousVolume > 0 ? previousVolume : INITIAL_VOLUME;
       setAudioVolume(restored);
@@ -130,7 +191,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==============================================================
   function playMusic() {
     if (!bgAudio) return;
+    ensureAudioContextRunning();
     bgAudio.volume = currentVolume;
+    if (gainNode && audioCtx) {
+      gainNode.gain.setValueAtTime(currentVolume, audioCtx.currentTime);
+    }
     const playPromise = bgAudio.play();
     if (playPromise !== undefined) {
       playPromise
@@ -165,7 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Toque para entrar
   btnEnter?.addEventListener('click', () => {
-    // 1. Iniciar audio con volumen al 50%
+    // 1. Activar AudioContext y reproducir música al 50%
+    ensureAudioContextRunning();
     playMusic();
 
     // 2. Ejecutar rotación 3D de las hojas del portón
@@ -185,6 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Toggle de audio flotante
   musicToggleBtn?.addEventListener('click', () => {
+    ensureAudioContextRunning();
     if (isMusicPlaying) {
       pauseMusic();
     } else {
