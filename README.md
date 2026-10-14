@@ -1,6 +1,6 @@
 # 🤠 Invitación Digital "Mi Patrimonio" - Cumpleaños de José
 
-Invitación digital interactiva de alta gama para la celebración del cumpleaños de **José** en la **Finca Mi Patrimonio** el **Sábado 17 de Octubre de 2026**.
+Invitación digital interactiva de alta gama para la celebración del cumpleaños de **José** en el **Fundo Mi Patrimonio** el **Sábado 17 de Octubre de 2026**.
 
 Diseñada con estética campestre y llanera elegante (tonos pergamino, madera noble, cuero, verde oliva y acentos dorados), con experiencia inmersiva para celulares y computadoras.
 
@@ -23,30 +23,29 @@ Diseñada con estética campestre y llanera elegante (tonos pergamino, madera no
    - Permite pausar o reanudar el audio en cualquier momento.
 
 3. **Encabezado y Bienvenida:**
-   - Distintivo de *"El Cumpleaños de José"*.
-   - Saludo y mensaje llanero auténtico.
+   - Distintivo de *"Celebrando a José"*.
+   - Identificación de *"Fundo Ganadero Mi Patrimonio"*.
 
 4. **Reloj Regresivo en Vivo:**
-   - Cuenta regresiva dinámica en tiempo real (Días : Horas : Minutos : Segundos) calculada exactamente para el **17 de Octubre de 2026 a las 2:00 PM**.
+   - Cuenta regresiva dinámica en tiempo real (Días : Horas : Minutos : Segundos) calculada exactamente para el **17 de Octubre de 2026 a las 10:00 AM**.
    - Botón directo para **"Agendar en mi Calendario"** (Google Calendar).
 
 5. **Ubicación y Logística:**
-   - Tarjetas de información clave: Fecha, Lugar (*Finca Mi Patrimonio*) y Celebración (*Ambiente campestre y gran fiesta*).
+   - Tarjetas de información clave: Fecha, Lugar (*Fundo Mi Patrimonio*) y Celebración (*Ambiente campestre y gran fiesta*).
    - Botón directo **"Abrir en Google Maps"**.
+   - Itinerario del día desde las 10:00 AM.
 
-6. **Código de Vestimenta (Dress Code):**
-   - **Damas (Cowgirl Chic / Llanera Elegante):** Fotografía de referencia de alta costura campestre y lista de sugerencias (blusa campera, jeans, botas de cuero vaqueras, accesorios).
-   - **Caballeros (Finca & Estilo Llanero):** Fotografía de referencia con camisa a cuadros/vaquera, jean clásico, botas de cuero y sombrero pelo 'e guama.
-   - Nota especial sobre calzado cómodo para terreno campestre.
-
-7. **Galería Dinámica de José:**
+6. **Galería Dinámica de José:**
    - Carrusel táctil compatible con deslizamiento por gestos (*touch swipe*) en teléfonos.
    - Contiene las fotos del cumpleañero José (disfrutando de los rústicos 4x4, celebrando y en su faceta musical animando con la consola).
    - Al hacer clic en cualquier fotografía se abre un visor ampliado (**Lightbox**).
 
-8. **Confirmación de Asistencia (RSVP) por WhatsApp:**
-   - Formulario sencillo con nombre para confirmación de asistencia individual directa.
-   - Al presionar *"Confirmar Asistencia por WhatsApp"*, se abre WhatsApp con un mensaje pre-formateado listo para enviar.
+8. **Confirmación de Asistencia (RSVP) con Control de Cupos por WhatsApp:**
+   - **Sistema de límite de pases:** Cada invitado cuenta con un cupo máximo asignado por el anfitrión (1, 2, 3 o más personas), impidiendo que lleven acompañantes no autorizados.
+   - **Selector de asistentes:** Permite confirmar exactamente cuántos de sus pases asignados acudirán y especificar nombres de acompañantes.
+   - **Panel Administrador para José:** Herramienta integrada para generar enlaces personalizados para cada familia/invitado (`?invitado=Juan&pases=2`) con botón directo para compartir en WhatsApp.
+   - **Pase VIP en pantalla:** Genera un pase digital con el nombre y número exacto de asistentes confirmados.
+   - WhatsApp oficial de confirmación: `+58 424 9645554`.
 
 ---
 
@@ -102,18 +101,35 @@ Si lo dejas vacío, WhatsApp le preguntará al invitado a qué contacto de su ag
 
 Para publicar la invitación en internet de forma gratuita:
 
-1. Crea un repositorio en [GitHub](https://github.com/new) con el nombre que prefieras (por ejemplo: `cumple-patrimonio`).
+1. Crea un repositorio en [GitHub](https://github.com/new) con el nombre que prefieras (por ejemplo: `invitacion-jose`).
 2. Sube todos los archivos del proyecto a la rama `main` (o utiliza GitHub Desktop / Git por terminal):
    ```bash
-   git init
    git add .
-   git commit -m "Invitacion digital Mi Patrimonio - Cumpleanos Jose"
-   git branch -M main
-   git remote add origin https://github.com/TU_USUARIO/cumple-patrimonio.git
-   git push -u origin main
+   git commit -m "Invitacion digital Mi Patrimonio con cupos y acompanantes dinamicos"
+   git push origin main
    ```
 3. En GitHub, entra en tu repositorio y ve a **Settings** > **Pages** (en el menú lateral izquierdo).
 4. En **Build and deployment** > **Branch**, selecciona `main` y la carpeta `/(root)`, luego presiona **Save**.
-5. En un par de minutos, GitHub generará tu enlace público:
-   `https://TU_USUARIO.github.io/cumple-patrimonio/`
-6. ¡Comparte el enlace por WhatsApp con todos los invitados! Al compartirlo, se mostrará con vista previa elegante gracias a las etiquetas OpenGraph incluidas.
+5. En un par de minutos, GitHub generará tu enlace público oficial:
+   `https://TU_USUARIO.github.io/invitacion-jose/`
+6. ¡Listo! Todo funciona 100% en línea para invitados en cualquier parte del mundo.
+
+---
+
+## 🤠 ¿Cómo Accede José al Panel de Anfitrión (Generador de Enlaces)?
+
+Para que ningún invitado vea el botón ni modifique sus cupos:
+- **Para los invitados:** El botón de anfitrión está **totalmente eliminado** del sitio.
+- **Para José (Anfitrión):** Puedes abrir el generador de enlaces mediante cualquiera de estas 3 vías:
+  1. **Acceso secreto en el formulario:** Toca **3 veces seguidas el ícono del toro 🐃** en la parte superior del formulario RSVP.
+  2. **Acceso secreto en el pie de página:** Haz clic en el pequeño punto `·` al final de los créditos del pie de página.
+  3. **Por enlace directo:** Entra a tu web agregando al final `?admin=jose` (ej: `https://TU_USUARIO.github.io/invitacion-jose/?admin=jose`).
+
+---
+
+## 👥 Control de Acompañantes Dinámicos
+
+- Si el invitado confirma **1 persona**: Solo asiste el titular.
+- Si confirma **2 personas**: Se despliega automáticamente el campo para el **Acompañante 1**.
+- Si confirma **3 personas**: Se despliegan 2 campos (**Acompañante 1** y **Acompañante 2**).
+- Al confirmar por WhatsApp, el mensaje que recibe José incluye el desglose ordenado con los nombres completos de cada acompañante para el protocolo de bienvenida.

@@ -8,19 +8,19 @@
 
   <!-- SEO & Social Sharing (OpenGraph) -->
   <meta name="description"
-    content="Estás cordialmente invitado a celebrar el cumpleaños de José en la Finca Mi Patrimonio este sábado 17 de octubre de 2026. Gran celebración campestre y día de fiesta." />
-  <meta property="og:title" content="Invitación Oficial: Cumpleaños de José · Finca Mi Patrimonio" />
+    content="Estás cordialmente invitado a celebrar el cumpleaños de José en el Fundo Mi Patrimonio este sábado 17 de octubre de 2026. Gran celebración campestre y día de fiesta." />
+  <meta property="og:title" content="Invitación Oficial: Cumpleaños de José · Fundo Mi Patrimonio" />
   <meta property="og:description"
     content="Sábado 17 de Octubre de 2026 · Coordenadas 7.983962, -63.543481 · ¡Toque para entrar a la celebración!" />
   <meta property="og:image" content="./assets/gate_entrance.jpg" />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#0B0F0C" />
 
-  <!-- Google Fonts Modernos -->
+  <!-- Google Fonts: Cinzel, Cinzel Decorative, Playfair Display, Outfit & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Cinzel+Decorative:wght@700;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
     rel="stylesheet" />
 
   <!-- Stylesheet -->
@@ -71,10 +71,6 @@
 
     <!-- Modern Entry UI -->
     <div class="gate-ui" id="gate-ui">
-      <div class="gate-badge">
-        <span class="badge-dot"></span>
-        <span>HACIENDA GANADERA &bull; EXCLUSIVO</span>
-      </div>
       <h1 class="gate-subtitle">CUMPLEAÑOS DE JOSÉ</h1>
 
       <button id="btn-enter" class="btn-enter-gate" aria-label="Toque para entrar a la celebración">
@@ -98,10 +94,11 @@
   </div>
 
   <!-- ============================================================== -->
-  <!-- FLOATING MODERN AUDIO CONTROLLER                               -->
+  <!-- FLOATING MODERN AUDIO CONTROLLER CON CONTROL DE VOLUMEN        -->
   <!-- ============================================================== -->
-  <aside class="floating-music-control" id="music-control" title="Reproducir / Pausar Música">
-    <button class="music-disc-btn" id="music-toggle-btn" aria-label="Control de música">
+  <aside class="floating-music-control" id="music-control">
+    <button class="music-disc-btn" id="music-toggle-btn" aria-label="Reproducir o pausar música"
+      title="Pausar / Reproducir">
       <div class="disc-vinyl" id="disc-vinyl">
         <div class="disc-center">
           <span class="disc-label">LLANO</span>
@@ -113,6 +110,21 @@
         <span class="bar bar-3"></span>
       </div>
     </button>
+
+    <!-- Barra de Volumen Integrada -->
+    <div class="music-volume-panel" id="music-volume-panel">
+      <button class="volume-mute-btn" id="volume-mute-btn" aria-label="Silenciar o activar sonido"
+        title="Silenciar / Activar">
+        <svg id="volume-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <path
+            d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+        </svg>
+      </button>
+      <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.05" value="0.5"
+        aria-label="Ajustar volumen" title="Volumen: 50%" />
+      <span class="volume-percent" id="volume-percent">50%</span>
+    </div>
+
     <div class="music-tooltip">
       <span class="music-song">Yo no me voy de mi llano</span>
       <span class="music-artist">Jorge Guerrero</span>
@@ -131,21 +143,14 @@
       <div class="hero-content container">
         <div class="hero-brand-pill">
           <span class="brand-bull-icon">🐃</span>
-          <span>FINCA GANADERA MI PATRIMONIO</span>
+          <span>FUNDO MI PATRIMONIO</span>
         </div>
 
-        <h1 class="hero-title">CELEBRANDO A JOSÉ</h1>
+        <h2 class="hero-title">CELEBRANDO EL CUMPLEAÑOS DE</h2>
 
         <div class="hero-highlight-box">
-          <span class="badge-event-type">GRAN FIESTA DE CUMPLEAÑOS</span>
-          <div class="hero-main-name">JOSÉ</div>
-          <span class="badge-subtitle">Celebración Campestre & Parranda Llanera</span>
+          <h1 class="hero-main-name">JOSÉ RODRÍGUEZ</h1>
         </div>
-
-        <p class="hero-quote">
-          «¡Compadre y comadre! Los esperamos en el llano para celebrar la vida, compartir entre amigos y
-          disfrutar de un gran día llanero.»
-        </p>
 
         <!-- Quick Event Badges -->
         <div class="hero-badges-row">
@@ -161,14 +166,14 @@
               <path
                 d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
             </svg>
-            <span>2:00 PM En Adelante</span>
+            <span>10:00 AM a 8:00 PM</span>
           </div>
           <div class="quick-pill">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
               <path
                 d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
             </svg>
-            <span>Finca Mi Patrimonio</span>
+            <span>Fundo Mi Patrimonio</span>
           </div>
         </div>
       </div>
@@ -257,22 +262,8 @@
             </div>
             <h3 class="card-title">Fecha & Hora</h3>
             <p class="card-highlight">Sábado, 17 de Octubre 2026</p>
-            <p class="card-subtext">Desde las 2:00 PM en adelante.</p>
+            <p class="card-subtext">De 10:00 AM a 8:00 PM.</p>
             <span class="card-badge">Puntualidad y Buena Vibra</span>
-          </div>
-
-          <!-- Card Lugar -->
-          <div class="detail-card">
-            <div class="card-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-              </svg>
-            </div>
-            <h3 class="card-title">Finca Mi Patrimonio</h3>
-            <p class="card-highlight">Entorno Campestre Privado</p>
-            <p class="card-subtext">Vía principal de acceso directo.</p>
-            <span class="card-badge">Acceso por Portón Principal</span>
           </div>
 
           <!-- Card El Agasajo -->
@@ -284,9 +275,25 @@
             </div>
             <h3 class="card-title">La Celebración</h3>
             <p class="card-highlight">Ambiente Campestre & Fiesta</p>
-            <p class="card-subtext">Un gran día campestre para compartir momentos inolvidables y celebrar entre amigos y familia.
+            <p class="card-subtext">Un gran día campestre para compartir momentos inolvidables y celebrar entre amigos y
+              familia.
             </p>
             <span class="card-badge">Celebración Llanera</span>
+          </div>
+
+          <!-- Card Bebidas & Brindis -->
+          <div class="detail-card">
+            <div class="card-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M3 14c0 1.3.84 2.4 2 2.82V20H3v2h6v-2H7v-3.18C8.16 16.4 9 15.3 9 14V6H3v8zm2-6h2v6H5V8zm14-5h-3c-.55 0-1 .45-1 1v3.28c-1.16.41-2 1.51-2 2.82v10c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V11.1c0-1.31-.84-2.41-2-2.82V4c0-.55-.45-1-1-1zm-1 2v3h-1V5h1zm2 15h-6V11.1c0-.61.49-1.1 1.1-1.1h3.8c.61 0 1.1.49 1.1 1.1V20z" />
+              </svg>
+            </div>
+            <h3 class="card-title">Bebidas & Brindis</h3>
+            <p class="card-highlight">Trae tu Bebida Preferida</p>
+            <p class="card-subtext">Por favor, cada quien lleva las bebidas de su preferencia para brindar y disfrutar
+              en grande.</p>
+            <span class="card-badge">Trae tu Bebida Favorita</span>
           </div>
         </div>
 
@@ -295,7 +302,7 @@
           <div class="location-banner">
             <div class="location-info">
               <span class="location-tag-label">DESTINO DEL EVENTO</span>
-              <h4>Cómo llegar a la Finca Mi Patrimonio</h4>
+              <h4>Cómo llegar al Fundo Mi Patrimonio</h4>
               <p>Presiona el botón para abrir la ruta directa en la aplicación de mapas de tu celular y llegar sin
                 contratiempos:</p>
             </div>
@@ -322,137 +329,41 @@
           <span class="section-tag">EL PROGRAMA DEL DÍA</span>
           <h2 class="section-title">Itinerario de la Parranda</h2>
           <div class="header-divider"></div>
-          <p class="section-desc">Una tarde y noche preparadas para gozar del buen llano sin descanso:</p>
+          <p class="section-desc">Un día entero preparado para gozar del buen llano sin descanso:</p>
         </div>
 
         <div class="timeline-grid">
           <div class="timeline-card">
-            <div class="timeline-time">02:00 PM</div>
+            <div class="timeline-time">10:00 AM</div>
             <div class="timeline-body">
               <h4>Llegada & Bienvenida</h4>
-              <p>Recepción en la finca y recibimiento cordial a todos los invitados.</p>
+              <p>Recepción en el fundo y recibimiento cordial a todos los invitados.</p>
             </div>
           </div>
 
           <div class="timeline-card">
-            <div class="timeline-time">04:00 PM</div>
+            <div class="timeline-time">01:00 PM</div>
             <div class="timeline-body">
-              <h4>Compartir Campestre</h4>
+              <h4>Almuerzo & Compartir Campestre</h4>
               <p>Momento especial de atención y compartir entre familiares y amigos.</p>
             </div>
           </div>
 
           <div class="timeline-card highlight-card">
-            <div class="timeline-time">06:00 PM</div>
+            <div class="timeline-time">04:00 PM</div>
             <div class="timeline-body">
-              <h4>Tarde Llanera & Joropo</h4>
+              <h4>Tarde Llanera</h4>
               <p>El mejor ambiente tradicional para zapatear y disfrutar en la pista.</p>
             </div>
           </div>
 
           <div class="timeline-card">
-            <div class="timeline-time">09:00 PM</div>
+            <div class="timeline-time">08:00 PM</div>
             <div class="timeline-body">
               <h4>Brindis & Celebración</h4>
               <p>Canto de cumpleaños, torta y compartir junto a José.</p>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION: CÓDIGO DE VESTIMENTA (DRESS CODE REAL GANADERO) -->
-    <section class="section section-dresscode" id="vestimenta">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-tag">CÓDIGO DE VESTIMENTA</span>
-          <h2 class="section-title">Estilo Finca Ganadera</h2>
-          <div class="header-divider"></div>
-          <p class="section-desc">
-            Queremos que todos estén <strong>frescos, cómodos y con estilo de campo</strong> para disfrutar del calor,
-            la sombra y el baile:
-          </p>
-        </div>
-
-        <div class="dresscode-grid">
-          <!-- Tarjeta Mujeres (Foto Real del Usuario) -->
-          <div class="dresscode-card dresscode-lightbox-trigger" data-title="Damas · Estilo Finca Ganadera">
-            <div class="dresscode-img-wrap">
-              <img src="assets/dress_code_mujeres.jpeg" alt="Código de Vestimenta Damas - Estilo Finca Ganadera"
-                class="dresscode-img" loading="lazy" />
-              <div class="dresscode-badge">DAMAS &bull; GANADERÍA CHIC</div>
-              <div class="dresscode-zoom-hint">
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
-                  <path
-                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-                </svg>
-                <span>Tocar para ampliar foto</span>
-              </div>
-            </div>
-            <div class="dresscode-content">
-              <h3 class="dresscode-style-title">Fresco, Cómodo & Llanero</h3>
-              <p class="dresscode-intro">El look perfecto para la finca bajo el sol del llano:</p>
-              <ul class="dresscode-tips">
-                <li>
-                  <span class="check-icon">✓</span>
-                  <span><strong>Prendas:</strong> Franela blanca fresca o blusa ligera de campo, y bermuda / short de
-                    jean cómodo.</span>
-                </li>
-                <li>
-                  <span class="check-icon">✓</span>
-                  <span><strong>Accesorios:</strong> Sombrero pelo 'e guama, tejana o gorra para protegerse del
-                    sol.</span>
-                </li>
-                <li>
-                  <span class="check-icon">✓</span>
-                  <span><strong>Calzado:</strong> Zapatos deportivos/tenis cómodos, botas o alpargatas (evitar tacones
-                    finos).</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Tarjeta Hombres (Foto Real del Usuario) -->
-          <div class="dresscode-card dresscode-lightbox-trigger" data-title="Caballeros · Estilo Llanero Cómodo">
-            <div class="dresscode-img-wrap">
-              <img src="assets/dress_code_hombres.jpeg" alt="Código de Vestimenta Caballeros - Estilo Llanero Cómodo"
-                class="dresscode-img" loading="lazy" />
-              <div class="dresscode-badge">CABALLEROS &bull; ESTILO CAMPO</div>
-              <div class="dresscode-zoom-hint">
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
-                  <path
-                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-                </svg>
-                <span>Tocar para ampliar foto</span>
-              </div>
-            </div>
-            <div class="dresscode-content">
-              <h3 class="dresscode-style-title">Bermuda, Franela & Alpargatas</h3>
-              <p class="dresscode-intro">Porte llanero auténtico y relajado para la parranda:</p>
-              <ul class="dresscode-tips">
-                <li>
-                  <span class="check-icon">✓</span>
-                  <span><strong>Prendas:</strong> Franela fresca, chemise o camisa ligera arremangada, y bermuda de
-                    jean.</span>
-                </li>
-                <li>
-                  <span class="check-icon">✓</span>
-                  <span><strong>Calzado:</strong> Alpargatas tradicionales llaneras o calzado fresco y
-                    descansado.</span>
-                </li>
-                <li>
-                  <span class="check-icon">✓</span>
-                  <span><strong>Accesorios:</strong> Gorra deportiva, sombrero de faena o pelo 'e guama.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="dresscode-note-card">
-          <div class="note-icon">💡</div>
-          <p><strong>Recomendación general:</strong> Ven con ropa fresca y descansada. Tendremos espacios de sombra,
-            brisa fresca y área de baile para disfrutar sin incomodidades.</p>
         </div>
       </div>
     </section>
@@ -535,7 +446,8 @@
                   <div class="slide-overlay">
                     <span class="slide-tag">Hombre de Campo</span>
                     <h3 class="slide-caption">El Llano en las Venas</h3>
-                    <p class="slide-subcaption">Disfrutando de las tierras, el ganado, las botas y la fuerza del campo.</p>
+                    <p class="slide-subcaption">Disfrutando de las tierras, el ganado, las botas y la fuerza del campo.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -567,7 +479,7 @@
       </div>
     </section>
 
-    <!-- SECTION: CONFIRMACIÓN DE ASISTENCIA (RSVP A WHATSAPP: 04249211768) -->
+    <!-- SECTION: CONFIRMACIÓN DE ASISTENCIA CON CONTROL DE CUPOS -->
     <section class="section section-rsvp" id="confirmacion">
       <div class="container">
         <div class="rsvp-card">
@@ -576,18 +488,54 @@
           </div>
 
           <span class="section-tag">CONFIRMAR ANTES DEL 10 DE OCTUBRE</span>
-          <h2 class="rsvp-title">¿Nos acompañas en Mi Patrimonio?</h2>
+          <h2 class="rsvp-title">¿Nos acompañas en el Fundo Mi Patrimonio?</h2>
           <div class="header-divider"></div>
 
+          <!-- Banner Informativo de Cupo Personalizado -->
+          <div class="rsvp-passes-banner" id="rsvp-passes-banner">
+            <div class="passes-banner-content">
+              <span class="passes-badge-icon">🎟️</span>
+              <div class="passes-text-wrap">
+                <span class="passes-banner-title" id="passes-banner-title">INVITACIÓN PERSONAL</span>
+                <span class="passes-banner-limit">Cupo reservado para ti: <strong id="assigned-passes-num">2 personas</strong></span>
+              </div>
+            </div>
+          </div>
+
           <p class="rsvp-desc">
-            Para coordinar la logística, atenciones y protocolo de bienvenida, por favor confírmanos
-            directamente a nuestro WhatsApp oficial:
+            Para coordinar la logística y protocolo de bienvenida, por favor confírmanos directamente a nuestro WhatsApp oficial:
           </p>
 
           <form id="rsvp-form" class="rsvp-form" onsubmit="return false;">
             <div class="form-group">
-              <label for="guest-name">Tu Nombre y Apellido:</label>
-              <input type="text" id="guest-name" class="rsvp-input" placeholder="Ej. Carlos Mendoza" required />
+              <label for="guest-name">Nombre y Apellido del Titular:</label>
+              <input type="text" id="guest-name" class="rsvp-input" placeholder="Ej. Juan Pérez" required />
+            </div>
+
+            <!-- Selector de Personas / Pases a confirmar -->
+            <div class="form-group">
+              <label>Número de personas que asistirán (incluyéndote):</label>
+              <div class="passes-stepper">
+                <button type="button" class="btn-stepper" id="btn-stepper-minus" aria-label="Disminuir">-</button>
+                <div class="stepper-value-wrap">
+                  <span class="stepper-value" id="stepper-value">1</span>
+                  <span class="stepper-unit" id="stepper-unit">persona</span>
+                </div>
+                <button type="button" class="btn-stepper" id="btn-stepper-plus" aria-label="Aumentar">+</button>
+              </div>
+              <p class="passes-limit-alert" id="passes-limit-alert">
+                🔒 Límite estricto: Esta invitación tiene un cupo máximo de <strong id="max-allowed-text">2 personas</strong>.
+              </p>
+            </div>
+
+            <!-- Contenedor Dinámico de Acompañantes (Se generan campos individuales para cada acompañante) -->
+            <div class="companions-container" id="companions-container" style="display: none;">
+              <div class="companions-header">
+                <span>👥 Nombres de tus acompañantes:</span>
+              </div>
+              <div id="companions-list" class="companions-list">
+                <!-- Se inyecta dinámicamente un campo para cada acompañante: Acompañante 1, Acompañante 2... -->
+              </div>
             </div>
 
             <button type="button" id="btn-whatsapp-rsvp" class="btn-rsvp-whatsapp">
@@ -603,11 +551,19 @@
           <div id="vip-ticket-preview" class="vip-ticket-box" style="display: none;">
             <div class="vip-ticket-badge">PASE VIP GENERADO</div>
             <h4 id="vip-guest-name">CARLOS MENDOZA</h4>
-            <p>Invitado de Honor · Finca Mi Patrimonio</p>
+            <p id="vip-guest-passes">Pase Válido para 2 Personas · Fundo Mi Patrimonio</p>
+            <div id="vip-companions-list" class="vip-companions-list"></div>
             <div class="vip-ticket-code">🎟️ REGISTRO REGISTRADO CON ÉXITO</div>
           </div>
 
           <p class="rsvp-sub">¡Tu presencia es el mejor regalo para José!</p>
+
+          <!-- Botón de Herramienta exclusivo para José (OCULTO por defecto para invitados) -->
+          <div class="admin-trigger-wrap" id="admin-trigger-wrap" style="display: none;">
+            <button type="button" class="btn-admin-trigger" id="btn-open-admin">
+              ⚙️ Panel de Anfitrión: Generar Enlaces con Cupo (José)
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -616,13 +572,14 @@
     <footer class="main-footer">
       <div class="container text-center">
         <div class="footer-logo">
-          <img src="assets/sign_mi_patrimonio.png" alt="Mi Patrimonio" class="footer-sign-img" />
+          <img src="assets/sign_mi_patrimonio.png" alt="Mi Patrimonio" class="footer-sign-img" id="footer-logo-img" />
         </div>
         <p class="footer-quote">
           «El llano no se olvida, la amistad se celebra. ¡Nos vemos en Mi Patrimonio!»
         </p>
         <p class="footer-copy">
           Sábado 17 de Octubre de 2026 · Coordenadas 7.983962, -63.543481 · Cumpleaños de José
+          <span class="admin-secret-dot" id="admin-secret-trigger" title="Acceso Anfitrión">·</span>
         </p>
       </div>
     </footer>
@@ -634,6 +591,64 @@
     <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar foto">×</button>
     <img src="" alt="Foto ampliada" class="lightbox-img" id="lightbox-img" />
     <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+
+  <!-- MODAL PANEL ADMINISTRADOR: GENERADOR DE PASES PARA JOSÉ -->
+  <div id="admin-modal" class="admin-modal" aria-hidden="true">
+    <div class="admin-modal-card">
+      <button class="admin-modal-close" id="admin-modal-close" aria-label="Cerrar ventana">&times;</button>
+      <div class="admin-modal-header">
+        <span class="admin-modal-icon">🤠</span>
+        <h3>Control de Pases y Cupos (José)</h3>
+        <p>Crea enlaces personalizados para cada invitado y limita cuántas personas puede llevar a la fiesta.</p>
+      </div>
+
+      <div class="admin-form">
+        <div class="form-group">
+          <label for="admin-guest-name">Nombre del Invitado / Familia:</label>
+          <input type="text" id="admin-guest-name" class="rsvp-input" placeholder="Ej. Juan Pérez" />
+        </div>
+
+        <div class="form-group">
+          <label for="admin-passes-count">Cupo Máximo Autorizado:</label>
+          <select id="admin-passes-count" class="rsvp-select">
+            <option value="1">1 Persona (Pase Individual)</option>
+            <option value="2" selected>2 Personas (Pase de Pareja)</option>
+            <option value="3">3 Personas (Familia de 3)</option>
+            <option value="4">4 Personas (Familia de 4)</option>
+            <option value="5">5 Personas (Familia de 5)</option>
+            <option value="6">6 Personas</option>
+            <option value="7">7 Personas</option>
+            <option value="8">8 Personas</option>
+            <option value="10">10 Personas</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="admin-base-url">Enlace Web Público (GitHub Pages / Dominio Online):</label>
+          <input type="text" id="admin-base-url" class="rsvp-input" placeholder="https://tu-usuario.github.io/invitacion-jose/" />
+          <small class="admin-url-hint">Se detecta automáticamente al estar en línea. Puedes pegarlo aquí si estás probando en tu PC.</small>
+        </div>
+
+        <button type="button" id="btn-generate-link" class="btn-generate-link">
+          ✨ Crear Enlace Online con Límite
+        </button>
+
+        <div id="admin-result-box" class="admin-result-box" style="display: none;">
+          <label>Enlace listo para enviar por WhatsApp:</label>
+          <div class="admin-link-row">
+            <input type="text" id="admin-generated-url" class="rsvp-input" readonly />
+            <button type="button" id="btn-copy-link" class="btn-copy-link" title="Copiar enlace">
+              📋 Copiar
+            </button>
+          </div>
+
+          <button type="button" id="btn-share-guest-wa" class="btn-share-guest-wa">
+            💬 Enviar Invitación con Cupo por WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- JavaScript -->
