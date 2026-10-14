@@ -1,7 +1,7 @@
 /**
  * INVITACIÓN DIGITAL MODERNA "MI PATRIMONIO" - CUMPLEAÑOS DE JOSÉ
  * Sábado 17 de Octubre de 2026
- * Coordenadas: 7.983962, -63.543481 | RSVP: +58 424 9645554
+ * Coordenadas: 7.983857, -63.544761 | RSVP: +58 424 9645554
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     title: "Cumpleaños de José · Fundo Mi Patrimonio",
     targetDate: new Date('2026-10-17T10:00:00-04:00'), // 17 de Octubre 2026, 10:00 AM
     locationName: "Fundo Mi Patrimonio",
-    coordinates: "7.983962, -63.543481",
-    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=7.983962,-63.543481",
-    wazeUrl: "https://waze.com/ul?ll=7.983962,-63.543481&navigate=yes",
+    coordinates: "7.983857, -63.544761",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=7.983857,-63.544761",
+    wazeUrl: "https://waze.com/ul?ll=7.983857,-63.544761&navigate=yes",
     whatsappPhone: "584249645554", // 04249211768 con código país +58
     songTitle: "Yo no me voy de mi llano",
     songArtist: "Jorge Guerrero",
